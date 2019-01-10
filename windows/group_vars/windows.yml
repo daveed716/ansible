@@ -1,0 +1,10 @@
+---
+# file: group_vars/windows.yml
+
+ansible_user: dkreuter@OTGCORP.OTG
+ansible_password: Thunder4085!
+ansible_port: 5986
+ansible_connection: winrm
+#ansible_winrm_transport: kerberos
+# The following is necessary for Python 2.7.9+ when using default WinRM self-signed certificates:
+ansible_winrm_server_cert_validation: ignore
