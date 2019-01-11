@@ -54,7 +54,7 @@
       file:
         src: /etc/nginx/sites-available/{{nginx_site_name}}.conf
         dest: /etc/nginx/sites-enabled/{{nginx_site_name}}.conf
-        state: link
+        state: hard
     - name: Restart nginx service
       service:
         name: nginx
