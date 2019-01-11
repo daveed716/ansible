@@ -53,7 +53,7 @@
     - name: Enable site by creating symbolic link
       file:
         src: /etc/nginx/sites-available/{{nginx_site_name}}.conf
-        dest: /etc/nginx/sites-enabled
+        dest: /etc/nginx/sites-enabled/{{nginx_site_name}}.conf
         state: link
     - name: Restart nginx service
       service:
