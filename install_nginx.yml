@@ -20,7 +20,7 @@
         state: directory
     - name: create nginxconfig.io directory
       file:
-        path: /etc/nginx/ssl
+        path: /etc/nginx/nginxconfig.io
         state: directory
     - name: ssl certificate
       template:
@@ -49,7 +49,7 @@
         dest: /etc/nginx/nginxconfig.io/general.conf
         owner: root
         group: root
-        mode: '0644'        
+        mode: '0644'
     - name: Restart nginx service
       service:
         name: nginx
