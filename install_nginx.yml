@@ -14,6 +14,42 @@
         owner: root
         group: root
         mode: '0644'
+    - name: create ssl directory
+      file:
+        path: /etc/nginx/ssl
+        state: directory
+    - name: create nginxconfig.io directory
+      file:
+        path: /etc/nginx/ssl
+        state: directory
+    - name: ssl certificate
+      template:
+        src: ssl.crt.j2
+        dest: /etc/nginx/ssl/ssl.crt
+        owner: root
+        group: root
+        mode: '0644'
+    - name: private key file
+      template:
+        src: private.key.j2
+        dest: /etc/nginx/ssl/private.key
+        owner: root
+        group: root
+        mode: '0644'
+    - name: proxy configuration settings
+      template:
+        src: proxy.conf.j2
+        dest: /etc/nginx/nginxconfig.io/proxy.conf
+        owner: root
+        group: root
+        mode: '0644'
+    - name: general configuration settings
+      template:
+        src: general.conf.j2
+        dest: /etc/nginx/nginxconfig.io/general.conf
+        owner: root
+        group: root
+        mode: '0644'        
     - name: Restart nginx service
       service:
         name: nginx
