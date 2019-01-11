@@ -7,3 +7,10 @@
       service:
           name: nginx
           state: started
+    - name: nginx configuration file
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/sites-available/{{nginx_site_name}}.conf
+        owner: root
+        group: root
+        mode: '0644'
