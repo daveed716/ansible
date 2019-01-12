@@ -9,7 +9,7 @@
           state: started
     - name: nginx configuration file
       template:
-        src: nginx.conf.j2
+        src: ubuntu/nginx/nginx.conf.j2
         dest: /etc/nginx/sites-available/{{nginx_site_name}}.conf
         owner: root
         group: root
@@ -24,28 +24,28 @@
         state: directory
     - name: ssl certificate
       template:
-        src: ssl.crt.j2
+        src: ubuntu/nginx/ssl.crt.j2
         dest: /etc/nginx/ssl/ssl.crt
         owner: root
         group: root
         mode: '0644'
     - name: private key file
       template:
-        src: private.key.j2
+        src: ubuntu/nginx/private.key.j2
         dest: /etc/nginx/ssl/private.key
         owner: root
         group: root
         mode: '0644'
     - name: proxy configuration settings
       template:
-        src: proxy.conf.j2
+        src: ubuntu/nginx/proxy.conf.j2
         dest: /etc/nginx/nginxconfig.io/proxy.conf
         owner: root
         group: root
         mode: '0644'
     - name: general configuration settings
       template:
-        src: general.conf.j2
+        src: ubuntu/nginx/general.conf.j2
         dest: /etc/nginx/nginxconfig.io/general.conf
         owner: root
         group: root
