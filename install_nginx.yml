@@ -1,5 +1,5 @@
 ---
-- hosts: nginx
+- hosts: testing
   tasks:
     - name: ensure nginx is at the latest version
       apt: name=nginx state=latest
