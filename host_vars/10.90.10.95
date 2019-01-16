@@ -1,0 +1,5 @@
+ansible_ssh_port: 22
+ansible_become_user: root
+hostname: IAH-CAM-NGINX
+nginx_site_name: iah.visibilitytech.net
+nginx_camera_server: 10.90.210.250

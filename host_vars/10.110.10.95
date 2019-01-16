@@ -1,4 +1,5 @@
 ansible_ssh_port: 22
 ansible_become_user: root
+hostname: DCA-CAM-NGINX
 nginx_site_name: dca.visibilitytech.net
 nginx_camera_server: 10.110.210.250
