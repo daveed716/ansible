@@ -1,0 +1,3 @@
+ansible_ssh_port: 22
+nginx_site_name: dca.visibilitytech.net
+nginx_camera_server: 10.110.210.250

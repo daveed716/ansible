@@ -1,6 +1,0 @@
-ansible_ssh_port: 22
-ansible_become_user: root
-ansible_become_pass: "!!DB1wf127."
-nginx_site_name: testing.visibilitytech.net
-nginx_camera_server: 10.40.210.250
-
