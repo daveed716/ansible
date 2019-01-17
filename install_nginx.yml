@@ -1,6 +1,9 @@
 ---
 - hosts: nginx
   tasks:
+    - name: set the hostname
+      hostname:
+        name: {{hostname}}
     - name: ensure nginx is at the latest version
       apt: name=nginx state=latest
     - name: start nginx
@@ -50,6 +53,10 @@
         owner: root
         group: root
         mode: '0644'
+    - name: Remove existing symbolic link
+      file:
+        path: /etc/nginx/sites-enabled/{{nginx_site_name}}.conf
+        state: absent  
     - name: Enable site by creating symbolic link
       file:
         src: /etc/nginx/sites-available/{{nginx_site_name}}.conf
