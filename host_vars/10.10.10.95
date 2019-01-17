@@ -1,0 +1,5 @@
+ansible_ssh_port: 22
+ansible_become_user: root
+hostname: MSP-CAM-NGINX
+nginx_site_name: msp.visibilitytech.net
+nginx_camera_server: 10.10.10.60
