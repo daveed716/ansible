@@ -17,6 +17,7 @@ server {
 	location / {
 		proxy_pass http://{{nginx_camera_server}}:{{nginx_server_one_proxy_pass_port}};
 		include nginxconfig.io/proxy.conf;
+		proxy_pass_request_headers      on;
 	}
 
 	#include nginxconfig.io/general.conf;
@@ -39,8 +40,8 @@ server {
         location / {
                 proxy_pass http://{{nginx_camera_server}}:{{nginx_server_two_proxy_pass_port}}/;
                 include nginxconfig.io/proxy.conf;
-		proxy_pass_request_headers      on;
-	}
+								proxy_pass_request_headers      on;
+								}
 
         #include nginxconfig.io/general.conf;
 }
