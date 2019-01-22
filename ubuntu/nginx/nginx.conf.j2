@@ -33,7 +33,7 @@ server {
 	ssl_certificate /etc/nginx/ssl/ssl.crt;
 	ssl_certificate_key /etc/nginx/ssl/private.key;
 
-	{{nginx_server_one_ssl}};
+	{{nginx_server_two_ssl}};
 
 
         # reverse proxy
@@ -45,6 +45,31 @@ server {
 
         #include nginxconfig.io/general.conf;
 }
+
+server {
+        listen {{nginx_server_three_port}} http2;
+        server_name {{nginx_site_name}};
+        root /var/www/{{nginx_site_name}}/public;
+
+
+	# SSL
+	ssl_certificate /etc/nginx/ssl/ssl.crt;
+	ssl_certificate_key /etc/nginx/ssl/private.key;
+
+	{{nginx_server_three_ssl}};
+
+
+        # reverse proxy
+        location / {
+                proxy_pass http://{{nginx_camera_server}}:{{nginx_server_three_proxy_pass_port}}/;
+                include nginxconfig.io/proxy.conf;
+								proxy_pass_request_headers      on;
+								}
+
+        #include nginxconfig.io/general.conf;
+}
+
+
 
 
 # HTTP redirect
