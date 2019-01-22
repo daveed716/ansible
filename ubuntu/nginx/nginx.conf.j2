@@ -17,7 +17,7 @@ server {
 					include nginxconfig.io/proxy.conf;
 					proxy_pass_request_headers      on;
 					}
-	#include nginxconfig.io/general.conf;
+	include nginxconfig.io/general.conf;
 }
 ###### /Server One Config ######
 
@@ -33,7 +33,7 @@ server {
 				ssl_certificate_key /etc/nginx/ssl/private.key;
 
 				#Enable/disable SSL
-				{{nginx_server_two_ssl}};
+				#{{nginx_server_two_ssl}};
 
 				# reverse proxy
         location / {
@@ -41,7 +41,7 @@ server {
                 include nginxconfig.io/proxy.conf;
 								proxy_pass_request_headers      on;
 								}
-        #include nginxconfig.io/general.conf;
+        include nginxconfig.io/general.conf;
 }
 #### /Server Two Config #####
 
@@ -66,7 +66,7 @@ server {
                 include nginxconfig.io/proxy.conf;
 								proxy_pass_request_headers      on;
 								}
-        #include nginxconfig.io/general.conf;
+        include nginxconfig.io/general.conf;
 }
 #### /Server Three Config #####
 
