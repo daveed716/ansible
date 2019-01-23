@@ -76,9 +76,9 @@ server {
 server {
 				listen 80;
 				server_name {{nginx_site_name}};
-				location / {
+				location = / {
 				# redirect http to https and append /WebClient to url
-				return 301 https://{{nginx_site_name}}/WebClient/$request_uri;
+				return 301 https://{{nginx_site_name}}/WebClient$request_uri;
 				}
 }
 #### /http to https redirect #####
