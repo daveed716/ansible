@@ -77,7 +77,6 @@ server {
 				listen 80;
 				server_name {{nginx_site_name}};
 				location = / {
-				# redirect http to https and append /VideoInsight to url
 				return 301 https://{{nginx_site_name}}/VideoInsight;
 				}
 }
