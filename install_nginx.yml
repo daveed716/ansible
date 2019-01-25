@@ -12,7 +12,7 @@
           state: started
     - name: nginx configuration file
       template:
-        src: ubuntu/nginx/nginx.conf.j2
+        src: ubuntu/nginx/{{nginx_conf_file}}
         dest: /etc/nginx/sites-available/{{nginx_site_name}}.conf
         owner: root
         group: root

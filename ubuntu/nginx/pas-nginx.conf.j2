@@ -1,0 +1,86 @@
+#### Park Ave Camera Reverse Proxy Config File ######
+
+#### Server One Config #####
+server {
+				listen {{nginx_server_one_port}} http2;
+				server_name {{nginx_site_name}};
+				root /var/www/{{nginx_site_name}}/public;
+
+				# SSL
+				ssl_certificate /etc/nginx/ssl/ssl.crt;
+				ssl_certificate_key /etc/nginx/ssl/private.key;
+
+				#Enable/disable SSL
+				{{nginx_server_one_ssl}};
+
+				# reverse proxy
+				location / {
+					proxy_pass http://{{nginx_camera_server}}:{{nginx_server_one_proxy_pass_port}};
+					include nginxconfig.io/proxy.conf;
+					proxy_pass_request_headers      on;
+					}
+	#include nginxconfig.io/general.conf;
+}
+###### /Server One Config ######
+
+
+#### Server Two Config #####
+server {
+        listen {{nginx_server_two_port}};
+        server_name {{nginx_site_name}};
+        root /var/www/{{nginx_site_name}}/public;
+
+				# SSL Certificates
+				ssl_certificate /etc/nginx/ssl/ssl.crt;
+				ssl_certificate_key /etc/nginx/ssl/private.key;
+
+				#Enable/disable SSL
+				#{{nginx_server_two_ssl}};
+
+				# reverse proxy
+        location / {
+                proxy_pass http://{{nginx_camera_server}}:{{nginx_server_two_proxy_pass_port}}/;
+                include nginxconfig.io/proxy.conf;
+								proxy_pass_request_headers      on;
+								}
+        #include nginxconfig.io/general.conf;
+}
+#### /Server Two Config #####
+
+
+#### Server Three Config #####
+server {
+        listen {{nginx_server_three_port}} http2;
+        server_name {{nginx_site_name}};
+        root /var/www/{{nginx_site_name}}/public;
+
+
+				# SSL Certificates
+				ssl_certificate /etc/nginx/ssl/ssl.crt;
+				ssl_certificate_key /etc/nginx/ssl/private.key;
+
+				#Enable/disable SSL
+				{{nginx_server_three_ssl}};
+
+        # reverse proxy
+        location / {
+                proxy_pass http://{{nginx_camera_server}}:{{nginx_server_three_proxy_pass_port}}/;
+                include nginxconfig.io/proxy.conf;
+								proxy_pass_request_headers      on;
+								}
+        #include nginxconfig.io/general.conf;
+}
+#### /Server Three Config #####
+
+
+
+#### http to https redirect #####
+server {
+				listen 80;
+				server_name {{nginx_site_name}};
+				location = / {
+				# redirect http to https and append /WebClient to url
+				return 301 https://{{nginx_site_name}}/WebClient$request_uri;
+				}
+}
+#### /http to https redirect #####
