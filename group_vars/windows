@@ -1,3 +1,4 @@
 ansible_user: dkreuter@OTGCORP.OTG
 ansible_connection: winrm
 ansible_port: 5986
+ansible_winrm_cert_validation: ignore
