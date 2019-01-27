@@ -9,6 +9,10 @@
       win_command: whoami
       register: whoami
     - debug: var=whoami
+    - name: Create directory structure
+      win_file:
+        path: "C:\Program Files\telegraf"
+        state: directory
     - name: Create a file from a Jinja2 template
       win_template:
         src: windows/test.txt.j2
