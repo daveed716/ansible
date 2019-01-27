@@ -12,4 +12,4 @@
     - name: Create a file from a Jinja2 template
       win_template:
         src: windows/test.txt.j2
-        dest: C:\scripts\test.txt
+        dest: "C:\Program Files\telegraf\test.txt"
