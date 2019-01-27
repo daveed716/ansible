@@ -5,3 +5,8 @@
       raw: ipconfig
       register: ipconfig
     - debug: var=ipconfig
+    - name: test win_command module
+      win_command: whoami
+      register: whoami
+    - debug: var=whoami
+    
